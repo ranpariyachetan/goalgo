@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func performBubbleSort(arr []int, popTop bool) {
 
 	isDone := false
@@ -78,7 +76,7 @@ func performSelectionSort(arr []int) []int {
 			arr[minIndex] = arr[minIndex] - arr[i]
 		}
 
-		fmt.Println(arr)
+		// fmt.Println(arr)
 	}
 
 	return arr
