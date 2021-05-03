@@ -1,3 +1,3 @@
-module goalgos
+module github.com/ranpariyachetan/goalgos
 
-go 1.15
+go 1.16
