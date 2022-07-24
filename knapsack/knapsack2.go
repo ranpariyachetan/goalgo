@@ -6,11 +6,11 @@ import "fmt"
 
 func TestKnapSack2TopDown() {
 	//vals := []int{5, 10, 15, 20}
-	vals := []int{6, 9, 7, 8}
+	// vals := []int{6, 9, 7, 8}
+	// vals := []int{23, 49, 78, 87, 59}
+	vals := []int{1, 2, 7}
 
-	//result := solveKnapsack3TopDown(arr)
-
-	sum := 30
+	sum := 10
 
 	result := solveKnapsack2TopDown(vals, sum)
 
@@ -73,7 +73,7 @@ func knapsackBottomUp(vals []int, sum int, dp [][]bool) bool {
 	for i := 1; i <= n; i++ {
 		for j := 1; j <= sum; j++ {
 			if vals[i-1] <= j {
-				dp[i][j] = dp[i][j-vals[i-1]] || dp[i-1][j]
+				dp[i][j] = dp[i-1][j-vals[i-1]] || dp[i-1][j]
 			} else {
 				dp[i][j] = dp[i-1][j]
 			}
