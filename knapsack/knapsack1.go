@@ -87,3 +87,44 @@ func knapsack1WithTopDownMemo(vals []int, weights []int, w int, n int, dp [][]in
 		return dp[n][w]
 	}
 }
+
+func TestKnapSack1BottomUp() {
+	vals := []int{60, 100, 120}
+	weights := []int{10, 20, 30}
+
+	w := 50
+
+	answer := solveKnapsack1BottomUp(vals, weights, w)
+
+	fmt.Println(answer)
+}
+
+func solveKnapsack1BottomUp(vals []int, weigths []int, w int) int {
+	n := len(vals)
+	return knapsack1BottomUp(vals, weigths, w, n)
+}
+func knapsack1BottomUp(vals []int, weights []int, w int, n int) int {
+
+	dp := make([][]int, n+1)
+
+	for i := range dp {
+		dp[i] = make([]int, w+1)
+		for j := 0; j < w+1; j++ {
+			if i == 0 || j == 0 {
+				dp[i][j] = 0
+			}
+		}
+	}
+
+	for i := 1; i < n+1; i++ {
+		for j := 1; j < w+1; j++ {
+			if weights[i-1] <= j {
+				dp[i][j] = utils.MaxInt(vals[i-1]+dp[i-1][j-weights[i-1]], dp[i-1][j])
+			} else {
+				dp[i][j] = dp[i-1][j]
+			}
+		}
+	}
+
+	return dp[n][w]
+}
