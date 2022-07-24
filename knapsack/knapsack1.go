@@ -1,6 +1,10 @@
 package knapsack
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/ranpariyachetan/goalgos/utils"
+)
 
 /*Given weights and values of n items, put these items in a knapsack of capacity W to get the maximum total value in the knapsack.
 In other words, given two integer arrays val[0..n-1] and wt[0..n-1] which represent values and weights associated with n items respectively.
@@ -35,9 +39,5 @@ func knapsack1(vals []int, weights []int, capacity int, n int) int {
 	a := vals[n-1] + knapsack1(vals, weights, capacity-weights[n-1], n-1)
 	b := knapsack1(vals, weights, capacity, n-1)
 
-	if a > b {
-		return a
-	} else {
-		return b
-	}
+	return utils.MaxInt(a, b)
 }
