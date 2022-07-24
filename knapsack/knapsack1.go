@@ -103,6 +103,7 @@ func solveKnapsack1BottomUp(vals []int, weigths []int, w int) int {
 	n := len(vals)
 	return knapsack1BottomUp(vals, weigths, w, n)
 }
+
 func knapsack1BottomUp(vals []int, weights []int, w int, n int) int {
 
 	dp := make([][]int, n+1)

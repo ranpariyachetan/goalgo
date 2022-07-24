@@ -5,8 +5,12 @@ import "fmt"
 //Given a set of non-negative integers, and a value sum, determine if there is a subset of the given set with sum equal to given sum.
 
 func TestKnapSack2TopDown() {
-	vals := []int{5, 10, 15, 20}
-	sum := 20
+	//vals := []int{5, 10, 15, 20}
+	vals := []int{6, 9, 7, 8}
+
+	//result := solveKnapsack3TopDown(arr)
+
+	sum := 30
 
 	result := solveKnapsack2TopDown(vals, sum)
 

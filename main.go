@@ -74,10 +74,15 @@ func main() {
 
 	// a :=
 
-	// knapsack.TestKnapSack1()
+	// knapsack.TestKnapSack1TopDown()
+	// knapsack.TestKnapSack1TopDownMemo()
+	// knapsack.TestKnapSack1BottomUp()
+	// knapsack.TestKnapSack2TopDown()
 	// knapsack.TestKnapSack2WithDP()
-	knapsack.TestKnapSack2()
-	// knapsack.TestKnapSack2WithDP()
+	// knapsack.TestKnapSack3TopDown()
+	// knapsack.TestKnapSack3BottomUP()
+	// knapsack.TestKnapSack4TopDown()
+	knapsack.TestKnapSack4BottomUp()
 	// 	fmt.Println(a)
 
 	fmt.Println("Hello world")
