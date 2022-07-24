@@ -27,11 +27,7 @@ func knapsack2(vals []int, sum int, n int) bool {
 		return false
 	}
 
-	if vals[n] == sum {
-		return true
-	}
-
-	if vals[n] < sum {
+	if vals[n] <= sum {
 		return knapsack2(vals, sum-vals[n], n+1) || knapsack2(vals, sum, n+1)
 	} else {
 		return knapsack2(vals, sum, n+1)

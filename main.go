@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/ranpariyachetan/goalgos/knapsack"
+)
 
 func main() {
 	// var sortType string
@@ -51,14 +55,30 @@ func main() {
 
 	// fmt.Println(insertionSorted)
 
-	rootNode := NewNode(3)
-	rootNode.Left = NewNode(9)
-	rootNode.Right = NewNode(20)
-	rootNode.Right.Left = NewNode(25)
-	rootNode.Right.Right = NewNode(40)
+	// rootNode := NewNode(1)
+	// rootNode.Left = NewNode(2)
+	// rootNode.Right = NewNode(3)
+	// // rootNode.Right.Left = NewNode(25)
+	// rootNode.Right.Right = NewNode(6)
 
-	result := findMinimumDepth(rootNode)
+	// result := getLeftView(rootNode)
 
-	fmt.Println(result)
+	// fmt.Println(result)
 
+	// testFindMedian()
+
+	// vals := []int{60, 210, 120}
+	// weights := []int{10, 20, 30}
+
+	// w := 50
+
+	// a :=
+
+	// knapsack.TestKnapSack1()
+	// knapsack.TestKnapSack2WithDP()
+	knapsack.TestKnapSack2()
+	// knapsack.TestKnapSack2WithDP()
+	// 	fmt.Println(a)
+
+	fmt.Println("Hello world")
 }

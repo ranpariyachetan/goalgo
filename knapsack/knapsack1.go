@@ -21,6 +21,7 @@ func TestKnapSack1() {
 
 	fmt.Println(answer)
 }
+
 func solveKnapsack1(vals []int, weights []int, capacity int) int {
 	n := len(vals)
 
@@ -33,11 +34,56 @@ func knapsack1(vals []int, weights []int, capacity int, n int) int {
 	}
 
 	if weights[n-1] > capacity {
-		knapsack1(vals, weights, capacity, n-1)
+		return knapsack1(vals, weights, capacity, n-1)
 	}
 
 	a := vals[n-1] + knapsack1(vals, weights, capacity-weights[n-1], n-1)
 	b := knapsack1(vals, weights, capacity, n-1)
 
 	return utils.MaxInt(a, b)
+}
+
+func TestKnapSack1WithDP() {
+	vals := []int{60, 100, 120}
+	weights := []int{10, 20, 30}
+
+	w := 50
+
+	answer := solveKnapsack1WithDP(vals, weights, w)
+
+	fmt.Println(answer)
+}
+
+func solveKnapsack1WithDP(vals []int, weights []int, w int) int {
+	n := len(vals)
+
+	dp := make([][]int, n+1)
+
+	for i := range dp {
+		dp[i] = make([]int, w+1)
+		for j := 0; j < w+1; j++ {
+			dp[i][j] = -1
+		}
+	}
+
+	return knapsack1WithDP(vals, weights, w, n, dp)
+}
+
+func knapsack1WithDP(vals []int, weights []int, w int, n int, dp [][]int) int {
+
+	if w == 0 || n == 0 {
+		return 0
+	}
+
+	if dp[n][w] != -1 {
+		return dp[n][w]
+	}
+
+	if weights[n-1] <= w {
+		dp[n][w] = utils.MaxInt(vals[n-1]+knapsack1(vals, weights, w-weights[n-1], n-1), knapsack1(vals, weights, w, n-1))
+		return dp[n][w]
+	} else {
+		dp[n][w] = knapsack1(vals, weights, w, n-1)
+		return dp[n][w]
+	}
 }

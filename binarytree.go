@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // Given a binary tree, find its minimum depth
 // A minimum depth is the number of nodes along the shortest path from the root to the nearest leaf node.
 
@@ -10,21 +12,6 @@ package main
 //         15  30
 
 // Answer: 2 (because 9 is the nearest leaf node reachable from root node using shortest path 2 (3 - 9))
-
-type TreeNode struct {
-	Value int
-	Left  *TreeNode
-	Right *TreeNode
-}
-
-func NewNode(value int) *TreeNode {
-	return &TreeNode{
-		Value: value,
-		Left:  nil,
-		Right: nil,
-	}
-}
-
 var level int
 
 type queueItem struct {
@@ -62,4 +49,31 @@ func findMinimumDepth(root *TreeNode) int {
 	}
 
 	return 0
+}
+
+func getLeftView(root *TreeNode) []int {
+	if root == nil {
+		return make([]int, 0)
+	}
+
+	var result []int
+	leftView(root, 1, 0, result)
+
+	return result
+}
+
+func leftView(root *TreeNode, level int, maxLevel int, result []int) {
+
+	if maxLevel < level {
+		result = append(result, root.Value)
+		fmt.Println(result)
+		maxLevel = level
+	}
+	if root.Left != nil {
+		leftView(root.Left, level+1, maxLevel, result)
+	}
+
+	if root.Right != nil {
+		leftView(root.Right, level+1, maxLevel, result)
+	}
 }
