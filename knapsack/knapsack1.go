@@ -35,7 +35,7 @@ func knapsack1(vals []int, weights []int, capacity int, n int) int {
 	if weights[n-1] > capacity {
 		knapsack1(vals, weights, capacity, n-1)
 	}
-	//if weights[n-1] <= capacity {
+
 	a := vals[n-1] + knapsack1(vals, weights, capacity-weights[n-1], n-1)
 	b := knapsack1(vals, weights, capacity, n-1)
 
