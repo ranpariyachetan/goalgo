@@ -4,21 +4,21 @@ import "fmt"
 
 //Given a set of non-negative integers, and a value sum, determine if there is a subset of the given set with sum equal to given sum.
 
-func TestKnapSack2() {
+func TestKnapSack2TopDown() {
 	vals := []int{5, 10, 15, 20}
 	sum := 20
 
-	result := solveKnapsack2(vals, sum)
+	result := solveKnapsack2TopDown(vals, sum)
 
 	fmt.Println(result)
 }
 
-func solveKnapsack2(vals []int, sum int) bool {
+func solveKnapsack2TopDown(vals []int, sum int) bool {
 
-	return knapsack2(vals, sum, 0)
+	return knapsack2TopDown(vals, sum, 0)
 }
 
-func knapsack2(vals []int, sum int, n int) bool {
+func knapsack2TopDown(vals []int, sum int, n int) bool {
 
 	if sum == 0 {
 		return true
@@ -28,22 +28,22 @@ func knapsack2(vals []int, sum int, n int) bool {
 	}
 
 	if vals[n] <= sum {
-		return knapsack2(vals, sum-vals[n], n+1) || knapsack2(vals, sum, n+1)
+		return knapsack2TopDown(vals, sum-vals[n], n+1) || knapsack2TopDown(vals, sum, n+1)
 	} else {
-		return knapsack2(vals, sum, n+1)
+		return knapsack2TopDown(vals, sum, n+1)
 	}
 }
 
-func TestKnapSack2WithDP() {
+func TestKnapSack2BottomUp() {
 	vals := []int{5, 10, 15, 20}
 	sum := 25
 
-	result := solveKnapsack2WithDP(vals, sum)
+	result := solveKnapsack2BottomUp(vals, sum)
 
 	fmt.Println(result)
 }
 
-func solveKnapsack2WithDP(vals []int, sum int) bool {
+func solveKnapsack2BottomUp(vals []int, sum int) bool {
 	n := len(vals)
 	dp := make([][]bool, n+1, sum+1)
 
@@ -60,10 +60,10 @@ func solveKnapsack2WithDP(vals []int, sum int) bool {
 		}
 	}
 
-	return knapsack2WithDP(vals, sum, dp)
+	return knapsackBottomUp(vals, sum, dp)
 }
 
-func knapsack2WithDP(vals []int, sum int, dp [][]bool) bool {
+func knapsackBottomUp(vals []int, sum int, dp [][]bool) bool {
 	n := len(vals)
 
 	for i := 1; i <= n; i++ {
