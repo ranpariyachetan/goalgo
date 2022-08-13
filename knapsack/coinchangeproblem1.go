@@ -1,6 +1,8 @@
 package knapsack
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func TestCoinChangeProblem1() {
 
@@ -27,14 +29,16 @@ func solveCoinChange1TopDown(coins []int, sum int, n int) int {
 		return 0
 	}
 
-	if coins[n] > sum {
-		return solveCoinChange1TopDown(coins, sum, n+1)
+	x := solveCoinChange1TopDown(coins, sum, n+1)
+
+	if coins[n] <= sum {
+		x += solveCoinChange1TopDown(coins, sum-coins[n], n)
 	}
 
-	return solveCoinChange1TopDown(coins, sum-coins[n], n) + solveCoinChange1TopDown(coins, sum, n+1)
+	return x
 }
 
-func TestCoinChangeProblemWithMemo() {
+func TestCoinChangeProblem1WithMemo() {
 
 	//inputs
 	// coins := []int{1, 2, 3}
@@ -68,15 +72,15 @@ func solveCoinChange1TopDownWithMemo(coins []int, sum int, n int, memo [][]int) 
 	}
 
 	if memo[n][sum] != -1 {
-		fmt.Println("returning from memo")
 		return memo[n][sum]
 	}
 
-	if coins[n] > sum {
-		memo[n][sum] = solveCoinChange1TopDownWithMemo(coins, sum, n+1, memo)
-		return memo[n][sum]
+	x := solveCoinChange1TopDownWithMemo(coins, sum, n+1, memo)
+
+	if coins[n] <= sum {
+		x += solveCoinChange1TopDownWithMemo(coins, sum-coins[n], n, memo)
 	}
 
-	memo[n][sum] = solveCoinChange1TopDownWithMemo(coins, sum-coins[n], n, memo) + solveCoinChange1TopDownWithMemo(coins, sum, n+1, memo)
+	memo[n][sum] = x
 	return memo[n][sum]
 }
