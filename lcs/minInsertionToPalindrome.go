@@ -6,6 +6,8 @@ import (
 	"github.com/ranpariyachetan/goalgos/utils"
 )
 
+// https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/
+
 func TestMinInsertionForPalindrome() {
 	testMinInsertionForPalindrome("zzazz")
 	testMinInsertionForPalindrome("mbadm")
