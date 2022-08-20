@@ -50,3 +50,61 @@ func eggDrop(e int, f int, m [][]int) int {
 	m[e][f] = min
 	return m[e][f]
 }
+
+func TestEggDropBinary() {
+	e := 6
+	f := 10000
+
+	m := make([][]int, e+1)
+
+	for i := range m {
+		m[i] = make([]int, f+1)
+		for j := range m[i] {
+			m[i][j] = -1
+		}
+	}
+
+	r := eggDropBinary(e, f, m)
+
+	fmt.Println(r)
+}
+
+func eggDropBinary(k int, n int, m [][]int) int {
+	if n == 0 || n == 1 {
+		return n
+	}
+
+	if k == 1 {
+		return n
+	}
+
+	if m[k][n] != -1 {
+		return m[k][n]
+	}
+
+	min := math.MaxInt
+	l := 1
+	h := n
+	tmp := 0
+
+	for l <= h {
+		mid := (l + h) / 2
+
+		a := eggDropBinary(k-1, mid-1, m)
+		b := eggDropBinary(k, n-mid, m)
+
+		tmp = 1 + utils.MaxInt(a, b)
+
+		if a < b {
+			l = mid + 1
+		} else {
+			h = mid - 1
+		}
+
+		min = utils.MinInt(min, tmp)
+
+	}
+
+	m[k][n] = min
+	return m[k][n]
+}
