@@ -90,8 +90,17 @@ func eggDropBinary(k int, n int, m [][]int) int {
 	for l <= h {
 		mid := (l + h) / 2
 
-		a := eggDropBinary(k-1, mid-1, m)
-		b := eggDropBinary(k, n-mid, m)
+		a := m[k-1][mid-1]
+		if a == -1 {
+			a = eggDropBinary(k-1, mid-1, m)
+			m[k-1][mid-1] = a
+		}
+
+		b := m[k][n-mid]
+		if b == -1 {
+			b = eggDropBinary(k, n-mid, m)
+			m[k][n-mid] = b
+		}
 
 		tmp = 1 + utils.MaxInt(a, b)
 
