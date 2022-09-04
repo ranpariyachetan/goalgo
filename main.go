@@ -1,9 +1,10 @@
 package main
 
 import (
+	"container/list"
 	"fmt"
 
-	"github.com/ranpariyachetan/goalgos/knapsack"
+	"github.com/ranpariyachetan/goalgos/advent2021"
 )
 
 func main() {
@@ -78,12 +79,55 @@ func main() {
 	// knapsack.TestKnapSack1TopDownMemo()
 	// knapsack.TestKnapSack1BottomUp()
 	// knapsack.TestKnapSack2TopDown()
+	// knapsack.TestKnapSack2BottomUp()
 	// knapsack.TestKnapSack2WithDP()
 	// knapsack.TestKnapSack3TopDown()
 	// knapsack.TestKnapSack3BottomUP()
 	// knapsack.TestKnapSack4TopDown()
-	knapsack.TestKnapSack4BottomUp()
+	// knapsack.TestKnapSack4BottomUp()
+	// knapsack.TestKnapSack5BottomUp()
+	// knapsack.TestKnapSack6BottomUp()
+	// knapsack.TestCoinChangeProblem1WithMemo()
+	// knapsack.TestCoinChangeProblem2()
+	// knapsack.TestCoinChangeProblem1()
+	// knapsack.TestCoinChangeProblem2WithMemo()
+	// lcs.TestFindMaxLengthOfLcsWithMemo()
+	// lcs.TestFindMaxLengthOfLcs()
+	// lcs.TestMinInsertionForPalindrome()
+	// lcs.TestFindShortestCommonSuperSequence()
+	// lcs.TestPalindromePartitioning()
+	// lcs.TestIsScramble()
+
+	// arrays.TestBinarySearch()
+	// mcm.TestEggDrop()
+	// mcm.TestEggDropBinary()
+	// trees.TestDiameterOfBinaryTree()
+	// trees.TestHasPathSum()
+
+	// stackTest()
+
+	// trees.TestPathSumII()
+	// advent2021.TestGetDepthIncreaseCountByWindow()
+	// advent2021.TestGetPowerConsumption()
+	advent2021.TestGetLifeSupportRating()
 	// 	fmt.Println(a)
 
 	fmt.Println("Hello world")
+}
+
+func stackTest() {
+	// var stack *list.List
+
+	stack := list.New()
+
+	stack.PushBack(1)
+	stack.PushBack(2)
+	stack.PushBack(3)
+	stack.PushBack(4)
+
+	for stack.Len() > 0 {
+		v := stack.Front()
+		fmt.Println(v.Value)
+		stack.Remove(v)
+	}
 }

@@ -9,9 +9,12 @@ import (
 // https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/
 
 func TestMinInsertionForPalindrome() {
-	testMinInsertionForPalindrome("zzazz")
-	testMinInsertionForPalindrome("mbadm")
-	testMinInsertionForPalindrome("leetcode")
+	// testMinInsertionForPalindrome("zzazz")
+	// testMinInsertionForPalindrome("mbadm")
+	// testMinInsertionForPalindrome("leetcode")
+	testMinInsertionForPalindrome("aabb")
+	testMinInsertionForPalindrome("letelt")
+
 }
 func testMinInsertionForPalindrome(s string) {
 

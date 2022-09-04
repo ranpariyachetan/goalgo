@@ -7,8 +7,8 @@ import (
 )
 
 func TestFindMaxLengthOfLcs() {
-	t1 := "leetcode"
-	t2 := "edocteel"
+	t1 := "aabb"
+	t2 := "bbaa"
 
 	r := findMaxLengthOfLsc(t1, t2, len(t1), len(t2))
 

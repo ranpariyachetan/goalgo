@@ -1,6 +1,8 @@
 package trees
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // https://leetcode.com/problems/path-sum/submissions/
 

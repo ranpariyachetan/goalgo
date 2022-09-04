@@ -8,21 +8,24 @@ func TestKnapSack6BottomUp() {
 	arr := []int{1, 1, 2, 3}
 	diff := 1
 
+	// arr := []int{1}
+	// diff := 2
+
 	result := solveKnapsack6BottomUp(arr, diff)
 
 	fmt.Println(result)
 }
 
-func solveKnapsack6BottomUp(arr []int, diff int) int {
+func solveKnapsack6BottomUp(nums []int, target int) int {
 	sum := 0
 
-	for _, num := range arr {
+	for _, num := range nums {
 		sum += num
 	}
 
-	subsetSum := (diff + sum) / 2
+	subsetSum := (target + sum) / 2
 
-	subsetSumCount := countSubsetSum(arr, subsetSum)
+	subsetSumCount := countSubsetSum(nums, subsetSum)
 
 	return subsetSumCount
 }
