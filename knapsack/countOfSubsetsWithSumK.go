@@ -5,11 +5,11 @@ import "fmt"
 // Given an array arr[] of length N and an integer X, the task is to find the number of subsets with a sum equal to X.
 
 func TestKnapSack4TopDown() {
-	// arr := []int{6, 9, 7, 8, 8}
-	// sum := 15
+	arr := []int{6, 9, 7, 8, 8}
+	sum := 15
 
-	arr := []int{1, 1, 1, 1}
-	sum := 1
+	// arr := []int{1, 1, 1, 1}
+	// sum := 1
 
 	result := solveKnapsack4TopDown(arr, sum)
 
