@@ -3,8 +3,6 @@ package main
 import (
 	"container/list"
 	"fmt"
-
-	"github.com/ranpariyachetan/goalgos/advent2021"
 )
 
 func main() {
@@ -109,7 +107,10 @@ func main() {
 	// trees.TestPathSumII()
 	// advent2021.TestGetDepthIncreaseCountByWindow()
 	// advent2021.TestGetPowerConsumption()
-	advent2021.TestGetLifeSupportRating()
+	// advent2021.TestGetLifeSupportRating()
+
+	// knapsack.TestSubArraysWithEachSumK()
+	// knapsack.TestFindSubArraysDivByK()
 	// 	fmt.Println(a)
 
 	fmt.Println("Hello world")
