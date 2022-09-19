@@ -51,6 +51,7 @@ func TestGetLifeSupportRating() {
 }
 
 func getLifeSupportRating(logs []string) int64 {
+	count := 0
 	counter := make(map[rune][]string)
 
 	counter['0'] = make([]string, 0)
@@ -61,6 +62,7 @@ func getLifeSupportRating(logs []string) int64 {
 
 	for _, log := range o2ratings {
 		counter[rune(log[0])] = append(counter[rune(log[0])], log)
+		count++
 	}
 
 	if len(counter['0']) > len(counter['1']) {
@@ -77,6 +79,7 @@ func getLifeSupportRating(logs []string) int64 {
 
 		if len(o2ratings) > 1 {
 			for _, log := range o2ratings {
+				count++
 				counter[rune(log[i])] = append(counter[rune(log[i])], log)
 			}
 
@@ -92,6 +95,7 @@ func getLifeSupportRating(logs []string) int64 {
 
 		if len(co2ratings) > 1 {
 			for _, log := range co2ratings {
+				count++
 				counter[rune(log[i])] = append(counter[rune(log[i])], log)
 			}
 
@@ -103,11 +107,11 @@ func getLifeSupportRating(logs []string) int64 {
 		}
 	}
 
-	fmt.Println(o2ratings)
-	fmt.Println(co2ratings)
-
 	o2, _ := strconv.ParseInt(o2ratings[0], 2, 64)
 	co2, _ := strconv.ParseInt(co2ratings[0], 2, 64)
+
+	fmt.Println(count)
+	fmt.Println(len(logs))
 
 	return o2 * co2
 }
